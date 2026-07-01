@@ -1,0 +1,94 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const siteUrl = 'https://socialsecuritytiming.com';
+const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Social Security Claiming Age Optimizer",
+      "url": siteUrl,
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "description": description,
+    })} />
+    <script defer data-domain="socialsecuritytiming.com" src="https://plausible.io/js/script.js"></script>
+    <style>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body class="min-h-screen bg-surface text-gray-900 font-sans">
+    <header class="bg-white border-b border-border">
+      <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 text-primary font-bold text-xl hover:text-primary-dark transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          SocialSecurityTiming.com
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="/" class="text-gray-600 hover:text-primary transition-colors">Calculator</a>
+          <a href="/faq/" class="text-gray-600 hover:text-primary transition-colors">FAQ</a>
+        </nav>
+      </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <footer class="bg-white border-t border-border mt-12">
+      <div class="max-w-5xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm text-gray-600">
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-3">Tools</h3>
+            <ul class="space-y-2">
+              <li><a href="/" class="hover:text-primary">Claiming Age Calculator</a></li>
+              <li><a href="/faq/" class="hover:text-primary">FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-3">Official Resources</h3>
+            <ul class="space-y-2">
+              <li><a href="https://www.ssa.gov" target="_blank" rel="noopener noreferrer" class="hover:text-primary">SSA.gov</a></li>
+              <li><a href="https://www.ssa.gov/myaccount/" target="_blank" rel="noopener noreferrer" class="hover:text-primary">my Social Security</a></li>
+              <li><a href="https://www.ssa.gov/benefits/retirement/planner/ageincrease.html" target="_blank" rel="noopener noreferrer" class="hover:text-primary">Retirement Planner</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900 mb-3">Information</h3>
+            <ul class="space-y-2">
+              <li><a href="/legal/" class="hover:text-primary">Legal Notice</a></li>
+              <li><a href="/privacy/" class="hover:text-primary">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-400">
+          <p>Independent, free Social Security calculator. Results are estimates only and not financial advice. Not affiliated with the Social Security Administration. 2026 bend points and rates.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

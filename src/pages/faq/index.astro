@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Social Security Claiming FAQ — SocialSecurityTiming.com';
+const description = 'Answers to frequently asked questions about Social Security claiming ages, benefits, spousal benefits, survivor benefits, taxes, and more.';
+
+const faqs = [
+  {
+    category: "Claiming Age Basics",
+    items: [
+      {
+        q: "What is the earliest age I can claim Social Security retirement benefits?",
+        a: "You can claim Social Security retirement benefits as early as age 62. However, your monthly benefit will be permanently reduced compared to waiting until your Full Retirement Age (FRA). For those born in 1960 or later, claiming at 62 results in a 30% reduction — you would receive only 70% of your full benefit amount."
+      },
+      {
+        q: "What is Full Retirement Age (FRA)?",
+        a: "Full Retirement Age is the age at which you are entitled to 100% of your Primary Insurance Amount (PIA). FRA depends on your birth year: it is 66 for those born in 1943-1954, gradually increases to 66 and 10 months for those born in 1959, and is 67 for those born in 1960 or later. At FRA, there is no reduction or increase to your benefit."
+      },
+      {
+        q: "Is there any benefit to waiting past age 70?",
+        a: "No. Delayed Retirement Credits stop accruing at age 70. There is no financial benefit to waiting past 70 to claim Social Security. If you have not claimed by age 70, you should do so."
+      },
+      {
+        q: "Can I change my mind after claiming Social Security?",
+        a: "Yes, but with limitations. Within 12 months of your first benefit payment, you can withdraw your application and repay all benefits received (including any spousal or dependent benefits paid on your record). After that window, you can voluntarily suspend benefits at FRA, which allows Delayed Retirement Credits to accrue until age 70."
+      }
+    ]
+  },
+  {
+    category: "Benefit Calculations",
+    items: [
+      {
+        q: "How is my Social Security benefit calculated?",
+        a: "Your benefit is calculated in three steps: (1) Your annual earnings are indexed to account for wage growth, (2) Your highest 35 years of indexed earnings are averaged and divided by 420 months to determine your AIME, (3) Your AIME is run through the PIA formula using bend points to produce your Primary Insurance Amount. For 2026, the formula is 90% of the first $1,174, plus 32% of the amount between $1,174 and $7,078, plus 15% above $7,078."
+      },
+      {
+        q: "What happens if I worked fewer than 35 years?",
+        a: "The SSA always uses 35 years in the AIME calculation. If you worked fewer than 35 years, zero-earnings years are included in the average, which reduces your AIME and therefore your PIA. Each additional year of work can replace a zero year, potentially increasing your benefit."
+      },
+      {
+        q: "What is COLA and how does it affect my benefit?",
+        a: "COLA (Cost-of-Living Adjustment) is an annual increase to Social Security benefits designed to keep pace with inflation. It is based on the Consumer Price Index for Urban Wage Earners (CPI-W). The average COLA over the past 20 years has been approximately 2.5%. COLA applies to all beneficiaries regardless of when they claimed, and it compounds over time."
+      },
+      {
+        q: "Does the earnings test reduce my benefit permanently?",
+        a: "No. If you claim before FRA and earn above the annual exempt amount ($22,320 in 2026), $1 in benefits is withheld for every $2 in excess earnings. However, at FRA, the SSA recalculates your benefit to give you credit for months when benefits were withheld. Your monthly benefit going forward will be higher to account for those withheld months."
+      }
+    ]
+  },
+  {
+    category: "Spousal and Family Benefits",
+    items: [
+      {
+        q: "How much can my spouse receive on my record?",
+        a: "A spouse can receive up to 50% of your PIA at their Full Retirement Age. If they claim before FRA, the spousal benefit is reduced. The spouse receives the higher of their own retirement benefit or the spousal benefit, but not both added together."
+      },
+      {
+        q: "Can my ex-spouse claim on my record?",
+        a: "Yes, if you were married for at least 10 years and the ex-spouse is unmarried, they can claim up to 50% of your PIA. This does not reduce your own benefit or affect your current spouse's benefits in any way."
+      },
+      {
+        q: "What are survivor benefits?",
+        a: "When a worker dies, the surviving spouse can receive up to 100% of the deceased worker's benefit at the survivor's FRA. Survivors can claim as early as age 60 (50 if disabled), with a reduced benefit. If the deceased delayed claiming and had a higher benefit, the survivor inherits that higher amount. This is a key reason for the higher earner in a couple to consider delaying."
+      }
+    ]
+  },
+  {
+    category: "Taxes and Other Considerations",
+    items: [
+      {
+        q: "Will I have to pay taxes on Social Security benefits?",
+        a: "Possibly. If your combined income (AGI + nontaxable interest + half of SS benefits) exceeds $25,000 (single) or $32,000 (married filing jointly), up to 50% of your benefits may be taxable. Above $34,000 (single) or $44,000 (married), up to 85% may be taxable. Some states also tax Social Security income."
+      },
+      {
+        q: "Does this calculator account for Medicare premiums?",
+        a: "This calculator focuses on Social Security claiming optimization and does not deduct Medicare premiums. Medicare Part B premiums are typically deducted from your Social Security check. In 2026, the standard Part B premium is expected to be approximately $185 per month, with higher-income beneficiaries paying more through IRMAA surcharges."
+      },
+      {
+        q: "How does inflation affect my claiming decision?",
+        a: "Social Security benefits are adjusted annually for inflation via COLA, making them a valuable inflation-protected income stream. Since higher benefits from delaying also receive COLA, the dollar advantage of delaying grows over time in nominal terms. Our calculator allows you to specify an assumed COLA rate to see this effect."
+      }
+    ]
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    <h1 class="text-4xl font-bold text-gray-900">Frequently Asked Questions</h1>
+    <p class="text-lg text-gray-600">Detailed answers about Social Security claiming ages, benefit calculations, and strategies.</p>
+
+    {faqs.map((section) => (
+      <section class="space-y-4">
+        <h2 class="text-2xl font-bold text-gray-900 border-b border-border pb-2">{section.category}</h2>
+        {section.items.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-5 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.q}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </section>
+    ))}
+
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-blue-800">
+      <p>
+        Have a question not answered here? The Social Security Administration offers comprehensive resources at
+        <a href="https://www.ssa.gov/benefits/retirement/" target="_blank" rel="noopener noreferrer" class="underline font-medium">ssa.gov/benefits/retirement</a>.
+        For personalized advice, consider consulting a fee-only financial advisor.
+      </p>
+    </div>
+  </div>
+</Layout>

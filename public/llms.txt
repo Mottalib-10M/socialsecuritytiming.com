@@ -1,0 +1,29 @@
+# SocialSecurityTiming.com
+
+## About
+SocialSecurityTiming.com is a free, open-source Social Security claiming age optimizer. It helps Americans determine the optimal age to start collecting Social Security retirement benefits by comparing monthly payments, lifetime totals, and break-even ages for claiming at any age from 62 to 70.
+
+## Features
+- **Claiming Age Calculator**: Compare benefits at every age from 62 to 70
+- **PIA/AIME Support**: Enter either your Primary Insurance Amount or Average Indexed Monthly Earnings
+- **Break-Even Analysis**: See when delaying benefits pays off compared to claiming early
+- **Lifetime Total Projections**: View total benefits with adjustable COLA assumptions
+- **Spousal Benefit Calculator**: Estimate spousal benefits based on both work records
+- **Visual Comparison**: Bar chart showing lifetime totals by claiming age
+- **Optimal Age Recommendation**: Highlights the best claiming age based on your life expectancy
+
+## Methodology
+- Uses 2026 SSA bend points: 90% of first $1,174, 32% of $1,174-$7,078, 15% above $7,078
+- Full Retirement Age by birth year per SSA schedule
+- Early reduction: 5/9 of 1% per month for first 36 months, 5/12 of 1% for additional months
+- Delayed Retirement Credits: 8% per year past FRA (for birth year 1943+)
+- Adjustable COLA assumption (default 2.5%)
+
+## Privacy
+All calculations are performed client-side in the browser. No financial data is collected, stored, or transmitted.
+
+## Technical Stack
+Built with Astro, React, and Tailwind CSS. All calculations are open-source and testable.
+
+## URL
+https://socialsecuritytiming.com

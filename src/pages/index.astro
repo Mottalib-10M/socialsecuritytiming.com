@@ -1,0 +1,179 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SSCalculator from '../components/SSCalculator';
+
+const title = 'Social Security Claiming Age Optimizer — When to Claim | SocialSecurityTiming.com';
+const description = 'Free Social Security calculator. Compare claiming ages 62-70, see monthly benefits, lifetime totals, break-even ages, and find the optimal time to start benefits.';
+
+const faqData = [
+  {
+    question: "What is the best age to claim Social Security?",
+    answer: "The best age depends on your health, life expectancy, financial needs, and other income sources. If you expect to live past your mid-80s, delaying until age 70 typically maximizes lifetime benefits. If you need income sooner or have health concerns, claiming earlier at 62 may make sense. Use our calculator above to compare your specific situation."
+  },
+  {
+    question: "How much does Social Security increase if I delay past 67?",
+    answer: "For those born in 1960 or later with a Full Retirement Age (FRA) of 67, each year you delay past FRA adds 8% to your benefit through Delayed Retirement Credits. By waiting until age 70, your benefit would be 124% of your PIA — a 24% permanent increase over your FRA benefit amount."
+  },
+  {
+    question: "How much is Social Security reduced if I claim at 62?",
+    answer: "If your FRA is 67 (birth year 1960+), claiming at 62 means you are 60 months early. The first 36 months reduce your benefit by 5/9 of 1% per month (20% total), and the remaining 24 months reduce it by 5/12 of 1% per month (10% total). This results in a 30% reduction, so you would receive 70% of your full PIA."
+  },
+  {
+    question: "What is a PIA (Primary Insurance Amount)?",
+    answer: "Your PIA is the monthly benefit you would receive if you claim Social Security exactly at your Full Retirement Age (FRA). It is calculated from your Average Indexed Monthly Earnings (AIME) using a formula with bend points. The PIA is the baseline from which early reductions and delayed credits are calculated."
+  },
+  {
+    question: "What is the break-even age for delaying Social Security?",
+    answer: "The break-even age is when the total lifetime benefits from claiming later surpass the total from claiming earlier. For someone comparing age 62 vs 67, the break-even is typically around age 78-80. Comparing 62 vs 70, the break-even is usually around age 80-83. If you live beyond the break-even age, delaying was the better financial choice."
+  },
+  {
+    question: "Can I collect spousal benefits and my own benefits?",
+    answer: "You will receive the higher of your own retirement benefit or your spousal benefit (50% of your spouse's PIA at FRA), but not both combined. If your spousal benefit is higher, you will receive your own benefit plus a spousal top-up to reach the spousal amount. Since the 2015 Bipartisan Budget Act, you can no longer file a restricted application for spousal benefits while letting your own benefit grow."
+  },
+  {
+    question: "Does Social Security get a cost-of-living adjustment (COLA)?",
+    answer: "Yes, Social Security benefits receive annual COLA increases based on the Consumer Price Index for Urban Wage Earners (CPI-W). Over the past 20 years, the average COLA has been approximately 2.5%. These adjustments help protect your purchasing power against inflation and apply regardless of when you claimed."
+  },
+  {
+    question: "Are Social Security benefits taxable?",
+    answer: "Up to 85% of your Social Security benefits may be subject to federal income tax depending on your combined income (adjusted gross income + nontaxable interest + half of Social Security benefits). If your combined income exceeds $25,000 (single) or $32,000 (married filing jointly), a portion of your benefits becomes taxable. Some states also tax Social Security benefits."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-12">
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Social Security <span class="text-primary">Claiming Age</span> Optimizer
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Find the optimal age to start collecting Social Security benefits. Compare monthly payments, lifetime totals, and break-even ages for claiming at any age from 62 to 70.
+      </p>
+    </section>
+
+    <SSCalculator client:load />
+
+    <!-- SEO Content -->
+    <article class="prose prose-lg max-w-none space-y-8">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How Social Security Benefits Are Calculated</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Social Security retirement benefits are based on your lifetime earnings record. The Social Security Administration (SSA) calculates your benefit in several steps, starting with your earnings history and ending with your Primary Insurance Amount (PIA). Understanding this process is essential for making an informed claiming decision.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Average Indexed Monthly Earnings (AIME)</h3>
+        <p class="text-gray-700 leading-relaxed">
+          First, the SSA indexes your annual earnings to account for changes in average wages over time. They then select your highest 35 years of indexed earnings and divide the total by 420 (the number of months in 35 years) to get your Average Indexed Monthly Earnings (AIME). If you worked fewer than 35 years, zeros are averaged in for the missing years, which can significantly reduce your AIME.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">PIA and Bend Points</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Your AIME is then run through a progressive formula using "bend points" to calculate your Primary Insurance Amount (PIA). For 2026, the formula applies three rates: 90% of the first $1,174 of AIME, 32% of AIME between $1,174 and $7,078, and 15% of AIME above $7,078. This progressive structure means that lower earners receive a higher percentage of their pre-retirement income from Social Security than higher earners. The PIA represents your monthly benefit at your Full Retirement Age.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The Impact of Claiming Age on Your Monthly Benefit</h2>
+        <p class="text-gray-700 leading-relaxed">
+          One of the most consequential financial decisions you will make in retirement is when to start collecting Social Security benefits. You can claim as early as age 62 or as late as age 70. Your Full Retirement Age (FRA) depends on your birth year — for those born in 1960 or later, FRA is 67.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Claiming Early (Ages 62-66)</h3>
+        <p class="text-gray-700 leading-relaxed">
+          If you claim before your FRA, your monthly benefit is permanently reduced. The reduction formula applies two rates: for the first 36 months before FRA, your benefit is reduced by 5/9 of 1% per month (approximately 6.67% per year). For any additional months beyond 36, the reduction is 5/12 of 1% per month (5% per year). For someone born in 1960 or later (FRA of 67), claiming at 62 results in a 30% permanent reduction — you would receive only 70% of your PIA for the rest of your life.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Claiming at Full Retirement Age</h3>
+        <p class="text-gray-700 leading-relaxed">
+          At your FRA, you receive exactly 100% of your PIA. There is no reduction and no bonus. For someone with a PIA of $2,000, this means a monthly benefit of exactly $2,000, or $24,000 per year.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Delaying Past FRA (Ages 68-70)</h3>
+        <p class="text-gray-700 leading-relaxed">
+          For each year you delay past FRA up to age 70, you earn Delayed Retirement Credits (DRC) of 8% per year (2/3 of 1% per month). This means at age 70, someone born in 1960 or later would receive 124% of their PIA — a permanent 24% increase. Using the same $2,000 PIA example, delaying to 70 would yield $2,480 per month, or $29,760 per year. There is no additional benefit for delaying past age 70.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Break-Even Analysis: When Does Delaying Pay Off?</h2>
+        <p class="text-gray-700 leading-relaxed">
+          A break-even analysis helps you determine the age at which delaying benefits becomes financially advantageous. When you claim early, you receive a smaller monthly amount but collect more total months of benefits. When you delay, you receive larger monthly checks but give up years of income. The break-even age is the point at which the cumulative total from the later claiming strategy surpasses the cumulative total from the earlier one.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          For a typical comparison of claiming at 62 versus 67, the break-even age is approximately 78 to 80 years old. Comparing 62 versus 70, the break-even is typically around 80 to 83. If you live beyond the break-even age — which the majority of 62-year-olds today will — delaying was the more financially rewarding choice. With COLA adjustments factored in, the break-even age can shift slightly because the higher base benefit from delaying compounds to an even greater advantage over time.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Spousal and Survivor Benefits</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Social Security provides important benefits for married couples that can significantly affect the optimal claiming strategy.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Spousal Benefits</h3>
+        <p class="text-gray-700 leading-relaxed">
+          A spouse may be eligible for up to 50% of the worker's PIA at their own FRA, even if they have little or no work history of their own. However, this spousal benefit is reduced if claimed before FRA, using a slightly different reduction schedule. If the spouse has their own work record, they will receive the higher of their own benefit or the spousal benefit — they do not receive both. Importantly, spousal benefits do not receive Delayed Retirement Credits, so there is no advantage to delaying spousal benefits past FRA.
+        </p>
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Survivor Benefits</h3>
+        <p class="text-gray-700 leading-relaxed">
+          When a worker dies, their surviving spouse can receive up to 100% of the deceased worker's benefit at the survivor's FRA. If the deceased had delayed claiming and was receiving a higher benefit, the survivor inherits that higher amount. This means delaying Social Security can protect a surviving spouse's income. Survivors can claim as early as age 60 (or 50 if disabled), but benefits are reduced for early claiming. This survivor benefit is one important reason why the higher-earning spouse in a couple may want to delay claiming to age 70.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Tax Implications of Social Security Income</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Social Security benefits may be subject to federal income tax depending on your "combined income." Combined income equals your adjusted gross income (AGI) plus nontaxable interest plus one-half of your Social Security benefits. For single filers, if your combined income is between $25,000 and $34,000, up to 50% of your benefits are taxable. Above $34,000, up to 85% of benefits may be taxable. For married couples filing jointly, the thresholds are $32,000 and $44,000 respectively.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          This has important implications for your claiming decision. If you continue working while collecting early benefits, your combined income is likely higher, potentially making more of your benefits taxable. Additionally, withdrawals from traditional IRAs and 401(k)s count as AGI, which can push your combined income above the taxable thresholds. Roth IRA withdrawals, on the other hand, do not count toward combined income. Strategic tax planning in retirement should consider how Social Security taxation interacts with other income sources.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          In addition, 13 states as of 2026 tax Social Security benefits to varying degrees. If you live in one of these states, state-level taxes are an additional factor in your claiming analysis.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategies for Maximizing Lifetime Social Security Benefits</h2>
+        <p class="text-gray-700 leading-relaxed">
+          While there is no single right answer for everyone, several strategies can help maximize your Social Security benefits over your lifetime.
+        </p>
+        <ul class="list-disc pl-6 space-y-3 text-gray-700">
+          <li><strong>Work at least 35 years:</strong> Since your AIME is based on your highest 35 years of indexed earnings, working fewer years means zeros are averaged in. Even part-time work can replace a zero year and boost your benefit.</li>
+          <li><strong>Maximize earnings in your highest-earning years:</strong> Since the calculation uses indexed earnings, higher earnings in your peak years can significantly increase your AIME and PIA.</li>
+          <li><strong>Delay if healthy and financially able:</strong> Each year of delay between FRA and age 70 increases your benefit by 8%. This is a guaranteed, inflation-adjusted return that is hard to match in the market.</li>
+          <li><strong>Coordinate spousal strategies:</strong> In married couples, it often makes sense for the higher earner to delay to 70 to maximize the survivor benefit, while the lower earner may claim earlier. This provides income during the gap years while protecting the surviving spouse's income.</li>
+          <li><strong>Consider the earnings test:</strong> If you claim before FRA while still working, the earnings test may temporarily reduce your benefits. In 2026, for those under FRA, $1 in benefits is withheld for every $2 earned above $22,320. However, these withheld benefits are recalculated at FRA to give you credit for the withheld months.</li>
+          <li><strong>Factor in health and longevity:</strong> Family health history, current health status, and lifestyle factors should inform your expectation of longevity, which is the most important variable in the claiming decision.</li>
+          <li><strong>Evaluate other income sources:</strong> If you have pensions, 401(k)s, IRAs, or other savings, you may be able to bridge the gap between retirement and age 70 without needing Social Security income, allowing you to delay and receive a larger benefit.</li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- FAQ Section with Schema.org markup -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqData.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-4 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqData.map((faq) => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer,
+        },
+      })),
+    })} />
+  </div>
+</Layout>
