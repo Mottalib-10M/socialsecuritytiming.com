@@ -1,0 +1,338 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SSCalculator from '../components/SSCalculator';
+import { benefitAmountsData, type BenefitAmountEntry } from '../lib/benefit-amounts-data';
+import { calculateBreakeven } from '../lib/engine';
+
+export function getStaticPaths() {
+  return benefitAmountsData.map((entry) => ({
+    params: { amount: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: BenefitAmountEntry;
+}
+
+const { entry } = Astro.props;
+
+const title = `${entry.piaFormatted} Social Security Benefit - Claiming Age Calculator`;
+const description = `See how a ${entry.piaFormatted} PIA translates to monthly benefits at every claiming age from 62 to 70. Break-even analysis, lifetime totals, and personalized calculator.`;
+const siteUrl = 'https://socialsecuritytiming.com';
+
+const birthYear = 1960;
+
+// Break-even ages
+const breakEven62vs67 = calculateBreakeven(entry.pia, birthYear, 62, 67);
+const breakEven62vs70 = calculateBreakeven(entry.pia, birthYear, 62, 70);
+const breakEven67vs70 = calculateBreakeven(entry.pia, birthYear, 67, 70);
+
+function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+function formatBreakEven(age: number): string {
+  if (age === Infinity) return 'Never';
+  return `Age ${(Math.round(age * 10) / 10).toFixed(1)}`;
+}
+
+// Other benefit pages for cross-linking
+const otherBenefits = benefitAmountsData.filter((b) => b.pia !== entry.pia);
+
+// Find the row at FRA for quick reference
+const fraRow = entry.benefitAtEachAge.find((r) => r.age === 67)!;
+const age62Row = entry.benefitAtEachAge.find((r) => r.age === 62)!;
+const age70Row = entry.benefitAtEachAge.find((r) => r.age === 70)!;
+
+// Bar chart max for relative sizing
+const maxLifetime = Math.max(entry.lifetimeComparison.at62, entry.lifetimeComparison.at67, entry.lifetimeComparison.at70);
+
+// Schema.org
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": `${entry.piaFormatted} Benefit`,
+      "item": `${siteUrl}/benefit-${entry.slug}/`,
+    },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": entry.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="space-y-12">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+        <li class="before:content-['/'] before:mx-2">{entry.piaFormatted} Benefit</li>
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+        <span class="text-primary">{entry.piaFormatted}</span> Social Security Benefit
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        With a PIA of {entry.piaFormatted}, your monthly benefit ranges from {formatCurrency(age62Row.monthlyBenefit)} at age 62 to {formatCurrency(age70Row.monthlyBenefit)} at age 70. Find your optimal claiming age below.
+      </p>
+    </section>
+
+    <!-- Key Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">At Age 62 (Earliest)</p>
+        <p class="text-4xl font-bold text-red-600">{formatCurrency(age62Row.monthlyBenefit)}</p>
+        <p class="text-sm text-gray-500 mt-1">{formatCurrency(age62Row.annualBenefit)}/year</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">At Age 67 (FRA)</p>
+        <p class="text-4xl font-bold text-gray-900">{formatCurrency(fraRow.monthlyBenefit)}</p>
+        <p class="text-sm text-gray-500 mt-1">{formatCurrency(fraRow.annualBenefit)}/year</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">At Age 70 (Maximum)</p>
+        <p class="text-4xl font-bold text-green-600">{formatCurrency(age70Row.monthlyBenefit)}</p>
+        <p class="text-sm text-gray-500 mt-1">{formatCurrency(age70Row.annualBenefit)}/year</p>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <article class="prose prose-lg max-w-none">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Understanding a {entry.piaFormatted} PIA</h2>
+        <p class="text-gray-700 leading-relaxed">{entry.description}</p>
+      </section>
+
+      <!-- Complete Benefit Table -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Benefit at Every Claiming Age</h2>
+        <p class="text-gray-700 mb-4">
+          The following table shows your estimated monthly and annual Social Security benefit at each claiming age from 62 to 70, based on a PIA of {entry.piaFormatted}. All figures assume birth year 1960 or later (FRA = 67).
+        </p>
+        <div class="overflow-x-auto not-prose">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50 border-b border-border">
+                <th class="px-4 py-3 text-left font-semibold text-gray-600">Claiming Age</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">% of PIA</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Monthly Benefit</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Annual Benefit</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">vs FRA</th>
+              </tr>
+            </thead>
+            <tbody>
+              {entry.benefitAtEachAge.map((row) => {
+                const diffFromFRA = row.monthlyBenefit - fraRow.monthlyBenefit;
+                return (
+                  <tr class={`border-b border-gray-100 ${row.age === 67 ? 'bg-blue-50 font-semibold' : 'hover:bg-gray-50'}`}>
+                    <td class="px-4 py-3">
+                      {row.age}
+                      {row.age === 67 && (
+                        <span class="ml-2 text-xs bg-primary text-white px-2 py-0.5 rounded-full">FRA</span>
+                      )}
+                      {row.age === 62 && (
+                        <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Earliest</span>
+                      )}
+                      {row.age === 70 && (
+                        <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Maximum</span>
+                      )}
+                    </td>
+                    <td class="px-4 py-3 text-right">{row.percentOfPIA}%</td>
+                    <td class="px-4 py-3 text-right">{formatCurrency(row.monthlyBenefit)}</td>
+                    <td class="px-4 py-3 text-right">{formatCurrency(row.annualBenefit)}</td>
+                    <td class={`px-4 py-3 text-right ${diffFromFRA < 0 ? 'text-red-600' : diffFromFRA > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+                      {diffFromFRA === 0 ? '-' : `${diffFromFRA > 0 ? '+' : ''}${formatCurrency(diffFromFRA)}`}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Break-Even Analysis -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Break-Even Analysis for {entry.piaFormatted} PIA</h2>
+        <p class="text-gray-700 mb-4">
+          The break-even age tells you when delaying starts to pay off. If you live past the break-even age, the later claiming strategy produces more total lifetime income.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose">
+          <div class="bg-white rounded-xl shadow-sm border border-border p-6">
+            <p class="text-sm text-gray-500 mb-1">Age 62 vs 67</p>
+            <p class="text-3xl font-bold text-primary">{formatBreakEven(breakEven62vs67)}</p>
+            <p class="text-sm text-gray-500 mt-2">
+              After this age, waiting until 67 provides more lifetime income than claiming at 62.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-border p-6">
+            <p class="text-sm text-gray-500 mb-1">Age 62 vs 70</p>
+            <p class="text-3xl font-bold text-primary">{formatBreakEven(breakEven62vs70)}</p>
+            <p class="text-sm text-gray-500 mt-2">
+              After this age, waiting until 70 provides more lifetime income than claiming at 62.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm border border-border p-6">
+            <p class="text-sm text-gray-500 mb-1">Age 67 vs 70</p>
+            <p class="text-3xl font-bold text-primary">{formatBreakEven(breakEven67vs70)}</p>
+            <p class="text-sm text-gray-500 mt-2">
+              After this age, waiting until 70 provides more lifetime income than claiming at FRA.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lifetime Comparison Visual -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Lifetime Benefits Comparison (to Age 85)</h2>
+        <p class="text-gray-700 mb-4">
+          Estimated total benefits collected from your claiming age to age 85, assuming no COLA adjustments.
+        </p>
+        <div class="space-y-4 not-prose">
+          <div class="flex items-center gap-3">
+            <span class="w-20 text-right text-sm font-medium text-gray-600">Age 62</span>
+            <div class="flex-1 bg-gray-100 rounded-full h-10 overflow-hidden">
+              <div
+                class="h-full rounded-full flex items-center px-4 text-white text-sm font-medium bg-red-500"
+                style={`width: ${(entry.lifetimeComparison.at62 / maxLifetime) * 100}%; min-width: 100px;`}
+              >
+                {formatCurrency(entry.lifetimeComparison.at62)}
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-20 text-right text-sm font-medium text-gray-600">Age 67</span>
+            <div class="flex-1 bg-gray-100 rounded-full h-10 overflow-hidden">
+              <div
+                class="h-full rounded-full flex items-center px-4 text-white text-sm font-medium bg-primary"
+                style={`width: ${(entry.lifetimeComparison.at67 / maxLifetime) * 100}%; min-width: 100px;`}
+              >
+                {formatCurrency(entry.lifetimeComparison.at67)}
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-20 text-right text-sm font-medium text-gray-600">Age 70</span>
+            <div class="flex-1 bg-gray-100 rounded-full h-10 overflow-hidden">
+              <div
+                class="h-full rounded-full flex items-center px-4 text-white text-sm font-medium bg-green-600"
+                style={`width: ${(entry.lifetimeComparison.at70 / maxLifetime) * 100}%; min-width: 100px;`}
+              >
+                {formatCurrency(entry.lifetimeComparison.at70)}
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mt-4">
+          With a life expectancy of 85, claiming at age {entry.lifetimeComparison.bestAge} produces the most total income: {formatCurrency(entry.lifetimeComparison.bestTotal)}.
+        </p>
+      </section>
+    </article>
+
+    <!-- Calculator -->
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Personalize Your {entry.piaFormatted} Benefit Analysis</h2>
+      <p class="text-gray-600 mb-6">
+        Enter your PIA (or start with {entry.piaFormatted}), birth year, and life expectancy to see a personalized comparison including COLA-adjusted lifetime totals.
+      </p>
+      <SSCalculator client:idle />
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="space-y-6 mt-8">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions About a {entry.piaFormatted} Benefit</h2>
+      <div class="space-y-4">
+        {entry.faqs.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-4 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cross-Links to Other Benefit Levels -->
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Other Benefit Levels</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {otherBenefits.map((other) => {
+          const otherFRA = other.benefitAtEachAge.find((r) => r.age === 67)!;
+          return (
+            <a
+              href={`/benefit-${other.slug}/`}
+              class="bg-white rounded-lg border border-border p-4 hover:border-primary hover:shadow-sm transition-all text-center group"
+            >
+              <p class="text-2xl font-bold text-primary group-hover:text-primary-dark">{other.piaFormatted}</p>
+              <p class="text-sm text-gray-500">PIA/month</p>
+              <p class="text-xs text-gray-400 mt-1">{formatCurrency(otherFRA.annualBenefit)}/year at FRA</p>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+
+    <!-- Cross-Links to Claiming Age Pages -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Claiming Age Guides</h2>
+      <p class="text-gray-600 mb-4">Learn about the impact of each specific claiming age:</p>
+      <div class="flex flex-wrap gap-3">
+        {[62, 63, 64, 65, 66, 67, 68, 69, 70].map((age) => (
+          <a
+            href={`/claim-at-age-${age}/`}
+            class="bg-white rounded-lg border border-border px-4 py-2 hover:border-primary hover:shadow-sm transition-all text-sm font-medium text-gray-700 hover:text-primary"
+          >
+            Claim at {age}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800 mt-8">
+      <strong>Important:</strong> These estimates are for educational purposes only and should not be considered
+      financial advice. Actual benefits depend on your complete earnings record, future COLAs, and other factors.
+      Consult your Social Security statement at{' '}
+      <a href="https://www.ssa.gov/myaccount/" target="_blank" rel="noopener noreferrer" class="underline">
+        ssa.gov/myaccount
+      </a>{' '}
+      and consider speaking with a financial advisor.
+    </div>
+  </div>
+</Layout>

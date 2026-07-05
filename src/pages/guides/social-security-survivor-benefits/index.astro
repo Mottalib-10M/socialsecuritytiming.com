@@ -1,0 +1,239 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'Social Security Survivor Benefits Explained | SocialSecurityTiming.com';
+const description = 'Complete guide to Social Security survivor benefits. Learn eligibility rules, how benefits are calculated, claiming strategies for widows and widowers, and how to maximize survivor income.';
+
+const faqData = [
+  {
+    question: "How much does a surviving spouse receive in Social Security survivor benefits?",
+    answer: "A surviving spouse can receive up to 100% of the deceased worker's benefit at the survivor's Full Retirement Age. If the deceased had delayed benefits and was receiving a larger amount due to Delayed Retirement Credits, the survivor inherits that higher benefit. If the survivor claims before their FRA, the benefit is reduced."
+  },
+  {
+    question: "What is the earliest age a surviving spouse can claim survivor benefits?",
+    answer: "A surviving spouse can claim survivor benefits as early as age 60 (or age 50 if they are disabled). However, claiming before the survivor's Full Retirement Age results in a reduced benefit. A surviving spouse caring for the deceased's child under age 16 can receive benefits at any age."
+  },
+  {
+    question: "Can I receive both my own retirement benefit and survivor benefits?",
+    answer: "You cannot receive both simultaneously, but you can switch between them. A common strategy is to claim one benefit type early and then switch to the other at a later age if it is higher. For example, you might claim survivor benefits at age 60 and then switch to your own retirement benefit at age 70 if it is larger."
+  },
+  {
+    question: "Do survivor benefits apply to divorced spouses?",
+    answer: "Yes. A divorced surviving spouse can receive survivor benefits if the marriage lasted at least 10 years. The divorced surviving spouse must be unmarried, or if remarried, the remarriage must have occurred after age 60. The benefit does not affect benefits payable to other survivors."
+  },
+  {
+    question: "How does the deceased worker's claiming age affect survivor benefits?",
+    answer: "If the deceased worker delayed claiming past FRA and was receiving Delayed Retirement Credits, the survivor inherits the higher benefit amount. This is one of the strongest reasons for the higher-earning spouse to delay claiming to age 70 - it protects the surviving spouse with a permanently higher income."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    <nav class="text-sm text-gray-500">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/guides/" class="hover:text-primary">Guides</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-900">Survivor Benefits</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Social Security Survivor Benefits Explained</h1>
+      <p class="text-xl text-gray-600">A comprehensive guide to understanding how survivor benefits work, who is eligible, and how to maximize the benefits available to your family.</p>
+    </header>
+
+    <article class="prose prose-lg max-w-none space-y-8 text-gray-700 leading-relaxed">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What Are Social Security Survivor Benefits?</h2>
+        <p>
+          Social Security survivor benefits provide monthly income to the family members of a deceased worker who earned enough Social Security credits during their lifetime. These benefits serve as a form of life insurance, replacing a portion of the deceased worker's income for surviving spouses, dependent children, and in some cases, dependent parents.
+        </p>
+        <p>
+          Survivor benefits are separate from retirement benefits and have their own eligibility rules, claiming ages, and reduction schedules. A worker needs a minimum of 40 Social Security credits (generally 10 years of work) for survivors to be eligible for full benefits, though fewer credits are needed if the worker dies young. The Social Security Administration pays more in survivor benefits than any private life insurance company in the United States, making this one of the most valuable but often overlooked components of the Social Security program.
+        </p>
+        <p>
+          Understanding survivor benefits is especially important for married couples making claiming decisions, because the higher-earning spouse's claiming age directly impacts the survivor benefit the remaining spouse will receive for the rest of their life. This creates a strong incentive for the higher earner to delay claiming, even if they are in good health, because delaying protects the surviving spouse's income.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Who Is Eligible for Survivor Benefits?</h2>
+        <p>
+          Several categories of family members may be eligible for survivor benefits based on a deceased worker's record:
+        </p>
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Surviving spouse age 60 or older:</strong> A widow or widower can claim reduced survivor benefits starting at age 60. Full survivor benefits are available at the survivor's Full Retirement Age.</li>
+          <li><strong>Disabled surviving spouse age 50-59:</strong> A surviving spouse who is disabled can claim survivor benefits as early as age 50, with a greater reduction for the earlier claiming age.</li>
+          <li><strong>Surviving spouse at any age caring for a child:</strong> If the surviving spouse is caring for the deceased worker's child who is under age 16 or disabled, they can receive survivor benefits regardless of the survivor's age. These are sometimes called "mother's" or "father's" benefits.</li>
+          <li><strong>Unmarried children under 18:</strong> The deceased worker's children who are unmarried and under age 18 (or under 19 if still in high school) are eligible for survivor benefits.</li>
+          <li><strong>Disabled children:</strong> A child who was disabled before age 22 can receive survivor benefits at any age, as long as they remain disabled.</li>
+          <li><strong>Dependent parents age 62 or older:</strong> If the deceased worker was providing at least half of a parent's financial support, the parent can receive survivor benefits starting at age 62.</li>
+          <li><strong>Divorced surviving spouse:</strong> If the marriage lasted at least 10 years and the divorced spouse is currently unmarried (or remarried after age 60), they can claim survivor benefits.</li>
+        </ul>
+        <p>
+          There is also a one-time lump-sum death payment of $255 that can be paid to the surviving spouse or eligible child. While small in amount, this payment should be applied for promptly after the worker's death.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How Survivor Benefits Are Calculated</h2>
+        <p>
+          The amount of the survivor benefit depends on several factors: the deceased worker's earnings record, whether the deceased had already claimed benefits, and the age at which the survivor claims.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">If the Deceased Had Not Yet Claimed Benefits</h3>
+        <p>
+          If the worker dies before claiming Social Security, the survivor benefit is based on the worker's PIA. At the survivor's Full Retirement Age, the surviving spouse receives 100% of the deceased worker's PIA. If the survivor claims before FRA, the benefit is reduced.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">If the Deceased Had Already Claimed Benefits</h3>
+        <p>
+          If the worker had already started collecting Social Security, the survivor benefit is generally the higher of: (a) the amount the deceased was receiving at the time of death (including any Delayed Retirement Credits), or (b) 82.5% of the deceased worker's PIA. This 82.5% floor protects survivors in cases where the deceased claimed very early and was receiving a significantly reduced benefit.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Reduction for Early Claiming</h3>
+        <p>
+          If the surviving spouse claims survivor benefits before their own FRA, the benefit is reduced. The reduction formula for survivor benefits differs from retirement benefits. Survivor benefits are reduced by 28.5% across the full early claiming period (from age 60 to FRA). The reduction is applied evenly across the months between age 60 and FRA.
+        </p>
+        <p>
+          For a survivor with an FRA of 67 claiming at age 60, the reduction is approximately 28.5%, meaning they would receive about 71.5% of the full survivor benefit. At age 62, the benefit would be approximately 81% of the full amount. Each month of delay between 60 and FRA adds to the benefit.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Family Maximum Benefit</h3>
+        <p>
+          The total amount that all family members can receive on one worker's record is limited by the family maximum benefit, which is typically between 150% and 180% of the worker's PIA. If the total of all family members' benefits exceeds this cap, each dependent's benefit is proportionally reduced (though the worker's or surviving spouse's own benefit is not reduced). This cap matters most when there are multiple eligible children.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The Critical Connection Between Claiming Age and Survivor Benefits</h2>
+        <p>
+          One of the most important aspects of survivor benefits - and one that is frequently overlooked in claiming decisions - is that the higher-earning spouse's claiming decision directly affects the survivor benefit. When the higher earner delays claiming to age 70, their benefit includes a 24% boost from Delayed Retirement Credits (for those with FRA of 67). If that spouse dies first, the surviving spouse inherits this larger benefit.
+        </p>
+        <p>
+          Consider this example: A married couple where the higher earner has a PIA of $2,800. If they claim at 62, their benefit is $1,960 per month (70% of PIA). If they claim at 70, their benefit is $3,472 per month (124% of PIA). The difference in the survivor benefit the remaining spouse would receive is $1,512 per month - $18,144 per year. If the surviving spouse lives another 20 years after the higher earner's death, that is over $362,000 in additional lifetime income from the decision to delay.
+        </p>
+        <p>
+          This is why financial planners consistently recommend that the higher-earning spouse in a couple consider delaying to age 70 if at all possible. It is not just about maximizing their own benefit - it is about protecting their spouse's income for decades after their death. Statistically, married women can expect to outlive their husbands by several years on average, making this survivor benefit protection especially important for women's financial security in later life.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategies for Maximizing Survivor Benefits</h2>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 1: Claim Survivor Benefits First, Then Switch</h3>
+        <p>
+          If you are a surviving spouse with your own work record, you have the unique ability to claim one type of benefit first and switch to the other later. For example, you could claim reduced survivor benefits at age 60 and then switch to your own retirement benefit at age 70 (when it includes maximum Delayed Retirement Credits). Alternatively, you could claim your own reduced retirement benefit at 62 and then switch to unreduced survivor benefits at your FRA.
+        </p>
+        <p>
+          The best approach depends on which benefit is larger and how the early reduction affects each. A financial advisor or the SSA can help you model both scenarios to determine which sequence maximizes your total lifetime income.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 2: Higher Earner Delays to Age 70</h3>
+        <p>
+          As discussed above, the higher-earning spouse delaying to age 70 maximizes the survivor benefit. This strategy is especially valuable when there is a significant age gap or earnings gap between spouses, and when the higher earner's health is good.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 3: Consider Remarriage Timing</h3>
+        <p>
+          If you remarry before age 60, you generally lose eligibility for survivor benefits on your deceased spouse's record. If you remarry at age 60 or later, you retain your eligibility. This timing rule means that a widow or widower who is considering remarriage should be aware of the financial implications related to their survivor benefits.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Survivor Benefits for Divorced Spouses</h2>
+        <p>
+          Divorced surviving spouses have access to survivor benefits under specific conditions. The marriage must have lasted at least 10 years, and the divorced surviving spouse must be at least 60 years old (50 if disabled). If the divorced surviving spouse remarried after age 60, they still retain eligibility for survivor benefits on the former spouse's record.
+        </p>
+        <p>
+          An important detail: if you are a divorced surviving spouse and your ex-spouse had remarried, both you and the current surviving spouse can receive full survivor benefits. One person's claim does not reduce the other's. This is a common point of confusion, but the SSA pays both benefits independently.
+        </p>
+        <p>
+          If your deceased ex-spouse never claimed Social Security, the survivor benefit is based on 100% of their PIA at your FRA. If they had claimed early and were receiving a reduced benefit, the 82.5% floor still applies to protect your survivor benefit from being too severely impacted by their early claiming decision.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Applying for Survivor Benefits</h2>
+        <p>
+          Unlike retirement benefits, survivor benefits cannot be applied for online in most cases. You will typically need to call the Social Security Administration at 1-800-772-1213 or visit your local SSA office to apply. You should apply for survivor benefits promptly after the worker's death, as benefits may be retroactive for only a limited period.
+        </p>
+        <p>
+          When applying, you will need the deceased worker's Social Security number, proof of death, your marriage certificate (or divorce decree for divorced spouses), your Social Security number, and your birth certificate. If you are caring for the deceased's child, you will also need the child's birth certificate and Social Security number.
+        </p>
+      </section>
+    </article>
+
+    <!-- FAQ Section -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqData.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-5 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-6 space-y-4">
+      <h3 class="text-lg font-semibold text-gray-900">Related Tools</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+          Claiming Age Calculator
+        </a>
+        <a href="/guides/social-security-spousal-benefits/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          Spousal Benefits Guide
+        </a>
+        <a href="/guides/when-to-claim-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          When to Claim Guide
+        </a>
+        <a href="/guides/maximize-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          Maximize Benefits Guide
+        </a>
+      </div>
+    </div>
+
+    <!-- Sources -->
+    <section class="space-y-3">
+      <h3 class="text-lg font-semibold text-gray-900">Sources</h3>
+      <ul class="text-sm text-gray-600 space-y-2">
+        <li><a href="https://www.ssa.gov/benefits/survivors/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Survivors Benefits</a></li>
+        <li><a href="https://www.ssa.gov/pubs/EN-05-10084.pdf" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA Publication - Survivors Benefits</a></li>
+        <li><a href="https://www.ssa.gov/benefits/survivors/ifyou.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - If You Are the Survivor</a></li>
+        <li><a href="https://www.ssa.gov/oact/quickcalc/early_late.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Effect of Early or Late Retirement</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialsecuritytiming.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://socialsecuritytiming.com/guides/" },
+      { "@type": "ListItem", "position": 3, "name": "Survivor Benefits", "item": "https://socialsecuritytiming.com/guides/social-security-survivor-benefits/" }
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  })} />
+</Layout>

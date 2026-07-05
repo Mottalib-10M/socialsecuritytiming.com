@@ -18,3 +18,5 @@ Allow: /
 
 User-agent: CCBot
 Allow: /
+
+Disallow: /*?*

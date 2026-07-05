@@ -1,0 +1,264 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'Working While Collecting Social Security: Earnings Test Guide | SocialSecurityTiming.com';
+const description = 'Understand how working affects Social Security benefits. Learn about the earnings test, withholding rules, the FRA recalculation, and strategies for those who work while collecting.';
+
+const faqData = [
+  {
+    question: "How much can I earn while collecting Social Security before my benefits are reduced?",
+    answer: "In 2026, if you are under Full Retirement Age for the entire year, $1 in benefits is withheld for every $2 you earn above $22,320. In the year you reach FRA, the threshold is higher and $1 is withheld for every $3 above the limit. After reaching FRA, there is no earnings test and you can earn any amount without affecting your benefits."
+  },
+  {
+    question: "Are the benefits withheld due to the earnings test lost permanently?",
+    answer: "No. When you reach Full Retirement Age, the SSA recalculates your benefit to give you credit for the months when benefits were withheld. Your monthly benefit going forward will be increased to account for those months, effectively returning the withheld benefits over time through higher monthly payments."
+  },
+  {
+    question: "What types of income count toward the earnings test?",
+    answer: "Only earned income from wages or self-employment counts toward the earnings test. Investment income, pensions, annuities, capital gains, rental income, interest, Social Security benefits from other people's records, and IRA or 401(k) withdrawals do not count. Only income earned through work triggers the earnings test."
+  },
+  {
+    question: "Does working while collecting Social Security increase my future benefit?",
+    answer: "It can. The SSA automatically reviews your earnings each year. If your current earnings are among your highest 35 years, the SSA recalculates your AIME and PIA, which can result in a higher benefit. This is especially beneficial if your current earnings replace a zero or low-earning year in your record."
+  },
+  {
+    question: "Should I delay Social Security if I plan to keep working?",
+    answer: "In most cases, yes. If you are still earning a good income, claiming early subjects you to the earnings test and likely causes your benefits to be heavily taxed. Delaying allows you to earn Delayed Retirement Credits (8% per year past FRA until 70) and avoid the complexity of benefit withholding. You can start benefits when your earned income decreases."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    <nav class="text-sm text-gray-500">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/guides/" class="hover:text-primary">Guides</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-900">Working While Collecting</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Working While Collecting Social Security</h1>
+      <p class="text-xl text-gray-600">Everything you need to know about the Social Security earnings test, how working affects your benefits, and strategies for managing income and benefits simultaneously.</p>
+    </header>
+
+    <article class="prose prose-lg max-w-none space-y-8 text-gray-700 leading-relaxed">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Can You Work and Collect Social Security at the Same Time?</h2>
+        <p>
+          Yes, you can absolutely work while receiving Social Security retirement benefits. There is no rule that prevents you from doing so, and millions of Americans work part-time or full-time while collecting benefits. However, if you are under your Full Retirement Age (FRA), your benefits may be temporarily reduced through the Social Security earnings test based on how much you earn.
+        </p>
+        <p>
+          The earnings test is one of the most misunderstood aspects of Social Security. Many people believe that the benefits lost to the earnings test are gone forever, which causes some workers to either stop working or avoid claiming Social Security. In reality, the withheld benefits are recalculated and returned to you through a higher monthly benefit once you reach FRA. Understanding this mechanism is essential for making informed decisions about working and claiming simultaneously.
+        </p>
+        <p>
+          Once you reach Full Retirement Age, the earnings test no longer applies. You can earn any amount from any source without any reduction to your Social Security benefits. This is a key distinction that affects the calculation of whether to claim benefits early while still working.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How the Social Security Earnings Test Works</h2>
+        <p>
+          The Social Security earnings test applies only to earned income (wages and self-employment income) and only to beneficiaries who are under Full Retirement Age. There are two versions of the test:
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Under FRA for the Entire Year</h3>
+        <p>
+          If you are under your Full Retirement Age for the entire calendar year, $1 in Social Security benefits is withheld for every $2 you earn above the annual exempt amount. In 2026, this exempt amount is $22,320. This means if you earn $32,320 (which is $10,000 over the limit), $5,000 in benefits would be withheld during that year.
+        </p>
+        <p>
+          The SSA does not reduce each monthly check proportionally. Instead, they typically withhold entire monthly checks until the required amount has been collected, then resume full payments for the remainder of the year. So if your monthly benefit is $1,500 and $5,000 needs to be withheld, you would receive no checks for the first three months and a partial check in the fourth month, then full checks for the remaining months.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">The Year You Reach FRA</h3>
+        <p>
+          In the calendar year you reach FRA, a more generous formula applies. Only earnings in the months before you reach FRA count, and $1 in benefits is withheld for every $3 you earn above a higher threshold. In 2026, this threshold is approximately $59,520. Starting with the month you reach FRA, there is no earnings test at all.
+        </p>
+        <p>
+          This higher threshold and lower withholding rate mean that the earnings test is much less likely to affect you in the year you reach FRA, especially if your birthday falls early in the year.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">After FRA</h3>
+        <p>
+          Once you have reached Full Retirement Age, there is no earnings test. You can earn unlimited income without any reduction to your Social Security benefits. This applies regardless of whether you claimed benefits early, at FRA, or at any other age.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What Counts as Earned Income?</h2>
+        <p>
+          Understanding what counts as "earnings" for the earnings test is critical, because only specific types of income trigger the withholding:
+        </p>
+        <p><strong>Income that DOES count toward the earnings test:</strong></p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Wages from employment (gross wages, not net)</li>
+          <li>Net earnings from self-employment</li>
+          <li>Bonuses and commissions</li>
+          <li>Vacation pay</li>
+          <li>Severance pay (in some cases)</li>
+        </ul>
+        <p><strong>Income that does NOT count toward the earnings test:</strong></p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Social Security benefits</li>
+          <li>Pension and retirement account withdrawals (401(k), IRA)</li>
+          <li>Investment income (dividends, interest, capital gains)</li>
+          <li>Rental income</li>
+          <li>Annuity payments</li>
+          <li>Government benefits (veterans' benefits, etc.)</li>
+          <li>Inheritance or gifts</li>
+        </ul>
+        <p>
+          This distinction is important because a retiree who earns $50,000 from investments and $10,000 from part-time work would only have the $10,000 in wages counted toward the earnings test - well below the $22,320 exempt amount.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The FRA Recalculation: Getting Your Withheld Benefits Back</h2>
+        <p>
+          This is perhaps the most important and least understood aspect of the earnings test: the benefits withheld are not permanently lost. When you reach Full Retirement Age, the SSA recalculates your monthly benefit to give you credit for the months in which benefits were withheld.
+        </p>
+        <p>
+          Here is how it works: Suppose you claimed at age 62 with a monthly benefit of $1,400 (70% of a $2,000 PIA). Over the next five years, the earnings test withheld a total of 12 months of benefits. At your FRA of 67, the SSA recalculates your benefit as if you had claimed 12 months later than you actually did. Your benefit increases to account for those 12 months, resulting in a higher monthly payment from FRA onward.
+        </p>
+        <p>
+          The recalculation effectively gives you back the withheld benefits through a higher monthly payment for the rest of your life. Whether this makes you "whole" depends on how long you live. If you live a long time, the higher monthly benefit from the recalculation will exceed the total amount withheld. If you die soon after FRA, you may not recover all the withheld amounts.
+        </p>
+        <p>
+          It is worth noting that the recalculation is automatic - you do not need to apply for it or remind the SSA. The adjustment typically takes effect within a few months of reaching FRA.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How Working Can Increase Your Future Benefit</h2>
+        <p>
+          Beyond the earnings test, working while collecting Social Security can actually increase your benefit amount if your current earnings are high enough. The SSA automatically reviews your earnings record each year and recalculates your benefit if your current earnings would increase your Average Indexed Monthly Earnings (AIME).
+        </p>
+        <p>
+          Your AIME is based on your highest 35 years of indexed earnings. If you worked fewer than 35 years, some years in the calculation are zeros. Each year of work that replaces a zero year will increase your AIME and, consequently, your PIA and monthly benefit. Even if you already have 35 years of earnings, a current high-earning year can replace a lower-earning year from earlier in your career.
+        </p>
+        <p>
+          This annual recalculation is automatic and results in a higher monthly benefit from the following January. The increase may be modest - often $10 to $50 per month - but it is permanent and compounds with COLA adjustments over time. For workers who had gaps in their employment history or who are earning more now than they did earlier in their career, continuing to work can provide a meaningful boost to their lifetime Social Security income.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Self-Employment and the Earnings Test</h2>
+        <p>
+          Self-employment income is subject to the earnings test, but the rules for calculating self-employment earnings differ from wage income. For the earnings test, the SSA uses your net earnings from self-employment (after deducting business expenses), not your gross revenue.
+        </p>
+        <p>
+          In your first year of retirement, the SSA may apply a monthly earnings test instead of an annual test. Under this grace-year provision, you can receive a full Social Security check for any month in which your earnings are below one-twelfth of the annual limit (approximately $1,860 per month in 2026), regardless of your total annual earnings. This can be particularly helpful if you retire mid-year after earning a substantial amount in the first part of the year.
+        </p>
+        <p>
+          For self-employed individuals, the SSA considers whether you performed "substantial services" in your business during a given month. If you worked more than 45 hours in a month (or 15-45 hours in a highly skilled occupation), the SSA considers you to have performed substantial services, which can affect the monthly earnings test.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategies for Working While Collecting Benefits</h2>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 1: Stay Below the Earnings Limit</h3>
+        <p>
+          If you want to collect full Social Security benefits while working part-time before FRA, keep your annual earnings below the exempt amount ($22,320 in 2026). This allows you to receive your full benefit with no withholding. Many retirees choose part-time work specifically calibrated to stay under this threshold.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 2: Delay Claiming Until FRA or Later</h3>
+        <p>
+          If you plan to continue working with earnings well above the exempt amount, consider delaying your Social Security claim until FRA (when the earnings test no longer applies) or even until age 70 (to maximize your benefit through Delayed Retirement Credits). This avoids the complexity of benefit withholding and earns you a permanently higher monthly benefit.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 3: Accept the Withholding</h3>
+        <p>
+          If you need Social Security income now but also plan to work above the exempt amount, you can accept the earnings test withholding knowing that the SSA will recalculate your benefit at FRA. This approach provides some Social Security income in the months not affected by withholding and results in a higher benefit after FRA. It works well if you expect to live past the recalculation break-even point.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Strategy 4: Consider Tax Implications</h3>
+        <p>
+          Remember that working while collecting benefits affects not only the earnings test but also the taxation of your benefits. Your earned income counts toward combined income for Social Security taxation purposes. High earners who claim benefits early may find that a significant portion of their Social Security is taxed at their marginal rate, further reducing the net value of early claiming.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Impact on Spousal and Family Benefits</h2>
+        <p>
+          The earnings test applies to each beneficiary individually. If you are receiving spousal benefits and working, your own earnings can cause your spousal benefit to be withheld. However, the primary worker's earnings test does not affect the spouse's benefit - each person's earnings are tested against their own benefit.
+        </p>
+        <p>
+          If you are receiving benefits on your own record and family members (spouse or children) are receiving benefits on your record, the earnings test applied to your earnings can also affect their benefits. When benefits are withheld from you due to the earnings test, dependent benefits paid on your record may also be reduced or suspended. However, at FRA, only your own benefit is recalculated - the withheld family benefits are not recalculated or returned.
+        </p>
+      </section>
+    </article>
+
+    <!-- FAQ Section -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqData.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-5 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-6 space-y-4">
+      <h3 class="text-lg font-semibold text-gray-900">Related Tools</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+          Claiming Age Calculator
+        </a>
+        <a href="/guides/social-security-taxes/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z" /></svg>
+          Social Security Taxes Guide
+        </a>
+        <a href="/guides/when-to-claim-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          When to Claim Guide
+        </a>
+        <a href="/guides/maximize-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          Maximize Benefits Guide
+        </a>
+      </div>
+    </div>
+
+    <!-- Sources -->
+    <section class="space-y-3">
+      <h3 class="text-lg font-semibold text-gray-900">Sources</h3>
+      <ul class="text-sm text-gray-600 space-y-2">
+        <li><a href="https://www.ssa.gov/benefits/retirement/planner/whileworking.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Getting Benefits While Working</a></li>
+        <li><a href="https://www.ssa.gov/pubs/EN-05-10069.pdf" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA Publication - How Work Affects Your Benefits</a></li>
+        <li><a href="https://www.ssa.gov/oact/cola/rtea.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Retirement Earnings Test Exempt Amounts</a></li>
+        <li><a href="https://www.ssa.gov/benefits/retirement/planner/taxes.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Income Taxes and Your Social Security Benefit</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialsecuritytiming.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://socialsecuritytiming.com/guides/" },
+      { "@type": "ListItem", "position": 3, "name": "Working While Collecting", "item": "https://socialsecuritytiming.com/guides/social-security-and-working/" }
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  })} />
+</Layout>

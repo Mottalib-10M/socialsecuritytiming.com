@@ -1,0 +1,256 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const title = 'How Social Security Income Is Taxed: Complete Tax Guide | SocialSecurityTiming.com';
+const description = 'Learn how Social Security benefits are taxed at the federal and state level. Understand combined income thresholds, taxable percentages, and strategies to minimize your tax burden.';
+
+const faqData = [
+  {
+    question: "At what income level do Social Security benefits become taxable?",
+    answer: "For single filers, Social Security benefits become partially taxable when your combined income (AGI + nontaxable interest + half of SS benefits) exceeds $25,000. For married couples filing jointly, the threshold is $32,000. Up to 50% of benefits are taxable between $25,000-$34,000 (single) or $32,000-$44,000 (married). Up to 85% of benefits are taxable above $34,000 (single) or $44,000 (married)."
+  },
+  {
+    question: "Can 100% of my Social Security benefits be taxed?",
+    answer: "No. The maximum amount of Social Security benefits subject to federal income tax is 85%. Even if you have very high income, at least 15% of your Social Security benefits are always tax-free at the federal level."
+  },
+  {
+    question: "Which states tax Social Security benefits?",
+    answer: "As of 2026, approximately 13 states tax Social Security benefits to varying degrees. These include Colorado, Connecticut, Kansas, Minnesota, Missouri, Montana, Nebraska, New Mexico, North Dakota, Rhode Island, Utah, Vermont, and West Virginia. However, most of these states offer exemptions or deductions that significantly reduce the tax for lower and middle-income retirees. The rules change frequently, so check your state's current tax laws."
+  },
+  {
+    question: "Do Roth IRA withdrawals affect the taxation of Social Security?",
+    answer: "No. Roth IRA withdrawals are not included in adjusted gross income and therefore do not count toward the combined income calculation used to determine Social Security taxation. This is a key advantage of having Roth assets in retirement - they provide tax-free income without pushing more of your Social Security benefits into taxable territory."
+  },
+  {
+    question: "How can I reduce taxes on my Social Security benefits?",
+    answer: "Strategies include: converting traditional IRA funds to Roth before claiming Social Security, managing taxable income to stay below the combined income thresholds, using Roth IRA withdrawals instead of traditional IRA withdrawals, timing capital gains carefully, and considering the tax impact of your Social Security claiming age. Consulting a tax professional is recommended for a personalized strategy."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    <nav class="text-sm text-gray-500">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <a href="/guides/" class="hover:text-primary">Guides</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-900">Social Security Taxes</span>
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">How Social Security Income Is Taxed</h1>
+      <p class="text-xl text-gray-600">A detailed guide to understanding federal and state taxation of Social Security benefits, combined income thresholds, and strategies to minimize your retirement tax burden.</p>
+    </header>
+
+    <article class="prose prose-lg max-w-none space-y-8 text-gray-700 leading-relaxed">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Are Social Security Benefits Taxable?</h2>
+        <p>
+          Many retirees are surprised to learn that Social Security benefits can be subject to federal income tax. Whether your benefits are taxed - and how much - depends on your "combined income," which the IRS defines as your adjusted gross income (AGI), plus nontaxable interest, plus one-half of your Social Security benefits.
+        </p>
+        <p>
+          Prior to 1984, Social Security benefits were entirely tax-free. The Social Security Amendments of 1983 introduced taxation of benefits for higher-income recipients, initially making up to 50% of benefits taxable. In 1993, the Omnibus Budget Reconciliation Act added a second tier, making up to 85% of benefits taxable for even higher-income recipients. Importantly, the income thresholds set in 1983 and 1993 have never been adjusted for inflation, which means that over time, more and more retirees are subject to Social Security taxation.
+        </p>
+        <p>
+          Understanding how this taxation works is essential for retirement planning because it affects your net income, your effective tax rate, and your optimal Social Security claiming strategy. The taxation of benefits creates a complex interaction between Social Security income, other retirement income sources, and your overall tax burden.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Federal Taxation: Combined Income Thresholds</h2>
+        <p>
+          The amount of your Social Security benefits subject to federal income tax depends on your combined income and your filing status. There are two tiers of taxation:
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Single Filers, Head of Household, and Qualifying Widow(er)</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Combined income below $25,000:</strong> No Social Security benefits are taxable.</li>
+          <li><strong>Combined income between $25,000 and $34,000:</strong> Up to 50% of benefits may be taxable.</li>
+          <li><strong>Combined income above $34,000:</strong> Up to 85% of benefits may be taxable.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Married Filing Jointly</h3>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>Combined income below $32,000:</strong> No Social Security benefits are taxable.</li>
+          <li><strong>Combined income between $32,000 and $44,000:</strong> Up to 50% of benefits may be taxable.</li>
+          <li><strong>Combined income above $44,000:</strong> Up to 85% of benefits may be taxable.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">Married Filing Separately</h3>
+        <p>
+          If you are married and file a separate return, the situation is notably different. If you lived with your spouse at any time during the year, your threshold is effectively $0, meaning up to 85% of your benefits are likely taxable regardless of your income level. This creates a strong tax incentive for married couples to file jointly rather than separately.
+        </p>
+
+        <p>
+          It is critical to understand that "up to 50%" or "up to 85%" refers to the portion of your benefits that becomes taxable income - not the tax rate applied to that income. The taxable portion is then taxed at your regular income tax rate. For example, if you are in the 22% tax bracket and 85% of your $24,000 annual Social Security benefit is taxable, you would owe $4,488 in federal tax on your benefits ($24,000 x 0.85 x 0.22).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How to Calculate Your Combined Income</h2>
+        <p>
+          Your combined income (sometimes called "provisional income") is calculated as follows:
+        </p>
+        <p class="bg-gray-100 p-4 rounded-lg font-mono text-sm">
+          Combined Income = Adjusted Gross Income (AGI) + Nontaxable Interest + 1/2 of Social Security Benefits
+        </p>
+        <p>
+          Let us break down each component:
+        </p>
+        <ul class="list-disc pl-6 space-y-3">
+          <li><strong>Adjusted Gross Income (AGI):</strong> This includes wages, salaries, taxable interest, dividends, capital gains, pension income, traditional IRA distributions, 401(k) withdrawals, rental income, and most other taxable income. Roth IRA distributions are not included in AGI.</li>
+          <li><strong>Nontaxable interest:</strong> Interest from municipal bonds and other tax-exempt sources. Even though this interest is not subject to income tax, it counts toward combined income for Social Security taxation purposes.</li>
+          <li><strong>One-half of Social Security benefits:</strong> Add 50% of your total annual Social Security benefit to the other two components.</li>
+        </ul>
+        <p>
+          Example: A married couple with $20,000 in pension income, $5,000 in IRA withdrawals, $2,000 in municipal bond interest, and $30,000 in annual Social Security benefits would have a combined income of: $20,000 + $5,000 + $2,000 + $15,000 (half of SS) = $42,000. Since $42,000 falls between $32,000 and $44,000, up to 50% of their Social Security benefits may be taxable.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">The Tax Torpedo: Understanding Marginal Tax Rates on Social Security</h2>
+        <p>
+          One of the most misunderstood aspects of Social Security taxation is the "tax torpedo" - the range of income where each additional dollar of income can cause $1.50 or $1.85 of taxable income. This happens because as your combined income rises, not only is the additional dollar taxable, but it also causes more of your Social Security benefits to become taxable.
+        </p>
+        <p>
+          In the range where Social Security benefits transition from 0% to 50% taxable, every additional dollar of income causes $1.50 of taxable income ($1.00 of the new income plus $0.50 of newly taxable Social Security). In the range where benefits transition from 50% to 85% taxable, every additional dollar causes $1.85 of taxable income.
+        </p>
+        <p>
+          For someone in the 22% federal tax bracket, this means the effective marginal tax rate in the torpedo zone can reach 22% x 1.85 = 40.7% - far higher than their nominal bracket. This is why careful income management in retirement is so important. A large IRA withdrawal or capital gain realization can trigger disproportionately high taxes when it pushes more Social Security benefits into taxable territory.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">State Taxation of Social Security Benefits</h2>
+        <p>
+          In addition to federal taxation, some states tax Social Security benefits. As of 2026, approximately 13 states impose some form of tax on Social Security income. However, the rules vary significantly:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>States that follow federal rules:</strong> Some states use the same combined income thresholds as the federal government.</li>
+          <li><strong>States with their own exemptions:</strong> Many states that tax Social Security offer exemptions based on age, income, or filing status that effectively shield most retirees from state taxation.</li>
+          <li><strong>States with full exemptions:</strong> The majority of states - including popular retirement destinations like Florida, Texas, Nevada, and Arizona - do not have a state income tax or specifically exempt Social Security benefits.</li>
+        </ul>
+        <p>
+          The specific states that tax Social Security benefits and the rules they apply change regularly as state legislatures update their tax codes. If you are considering relocating in retirement, the state tax treatment of Social Security benefits is one of many factors worth evaluating. However, it should not be the sole factor - state taxes on other retirement income, property taxes, cost of living, and quality of life are equally important considerations.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategies to Minimize Social Security Taxes</h2>
+        <p>
+          While you cannot avoid Social Security taxation entirely if your income exceeds the thresholds, several strategies can help minimize the tax impact:
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">1. Roth Conversion Strategy</h3>
+        <p>
+          Consider converting traditional IRA funds to Roth IRAs during the years between retirement and age 70, before you start claiming Social Security. While you will pay income tax on the conversion, the resulting Roth IRA withdrawals in later years will not count toward combined income and will not cause Social Security benefits to be taxed. This strategy is especially effective in years when your income is temporarily lower.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">2. Manage Retirement Account Withdrawals</h3>
+        <p>
+          Be strategic about how much you withdraw from traditional IRAs and 401(k)s each year. If possible, keep your combined income below the thresholds or in the lower taxation tier. This may mean drawing down taxable accounts over multiple years rather than taking large lump-sum withdrawals.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">3. Use Tax-Advantaged Accounts Strategically</h3>
+        <p>
+          Roth IRA withdrawals, cash from savings accounts (principal, not interest), and return of basis from nondeductible IRA contributions do not count toward combined income. By having a mix of taxable, tax-deferred, and tax-free income sources in retirement, you gain flexibility to manage your combined income and minimize Social Security taxation.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">4. Consider Capital Gains Timing</h3>
+        <p>
+          Realized capital gains from taxable brokerage accounts are included in AGI and therefore affect combined income. Consider spreading gains over multiple tax years or harvesting losses to offset gains in years when you are receiving Social Security benefits.
+        </p>
+
+        <h3 class="text-xl font-semibold text-gray-900 mt-6 mb-3">5. Delay Social Security to Reduce Working-Years Taxation</h3>
+        <p>
+          If you are still working and earning a high income, claiming Social Security early means your benefits will almost certainly be heavily taxed because your earned income pushes combined income well above the thresholds. Delaying Social Security until after you stop working can mean lower combined income in the years you are receiving benefits, potentially reducing or eliminating the taxation of those benefits.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">How Claiming Age Interacts with Taxation</h2>
+        <p>
+          Your Social Security claiming age has an indirect but significant impact on your tax situation. Claiming early means lower monthly benefits but more years of receiving them alongside other income sources. Delaying means higher monthly benefits but fewer years of overlap with earned income.
+        </p>
+        <p>
+          For those who plan to work past age 62, delaying Social Security can be doubly beneficial: you avoid the earnings test that temporarily withholds benefits, and you avoid having your benefits taxed alongside high earned income. Once you stop working and your other taxable income decreases, the larger delayed benefit may fall entirely or partially below the taxation thresholds.
+        </p>
+        <p>
+          However, for those with large required minimum distributions (RMDs) from tax-deferred accounts starting at age 73, the combination of RMD income and larger delayed Social Security benefits may push them further into the 85% taxation tier. This is where individual tax planning becomes essential - there is no one-size-fits-all answer.
+        </p>
+      </section>
+    </article>
+
+    <!-- FAQ Section -->
+    <section class="space-y-6">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {faqData.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-5 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl p-6 space-y-4">
+      <h3 class="text-lg font-semibold text-gray-900">Related Tools</h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <a href="/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+          Claiming Age Calculator
+        </a>
+        <a href="/guides/social-security-and-working/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+          Working While Collecting Guide
+        </a>
+        <a href="/guides/maximize-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          Maximize Benefits Guide
+        </a>
+        <a href="/guides/when-to-claim-social-security/" class="flex items-center gap-2 text-primary hover:text-primary-dark font-medium text-sm">
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          When to Claim Guide
+        </a>
+      </div>
+    </div>
+
+    <!-- Sources -->
+    <section class="space-y-3">
+      <h3 class="text-lg font-semibold text-gray-900">Sources</h3>
+      <ul class="text-sm text-gray-600 space-y-2">
+        <li><a href="https://www.ssa.gov/benefits/retirement/planner/taxes.html" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Income Taxes and Your Social Security Benefit</a></li>
+        <li><a href="https://www.irs.gov/publications/p915" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">IRS Publication 915 - Social Security and Equivalent Railroad Retirement Benefits</a></li>
+        <li><a href="https://www.ssa.gov/pubs/EN-05-10035.pdf" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA Publication - What Every Woman Should Know</a></li>
+        <li><a href="https://www.ssa.gov/news/press/factsheets/colafacts.htm" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">SSA.gov - Cost-of-Living Adjustment Fact Sheet</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialsecuritytiming.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://socialsecuritytiming.com/guides/" },
+      { "@type": "ListItem", "position": 3, "name": "Social Security Taxes", "item": "https://socialsecuritytiming.com/guides/social-security-taxes/" }
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+    }))
+  })} />
+</Layout>

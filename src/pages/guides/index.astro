@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'Social Security Guides - Expert Claiming Strategies | SocialSecurityTiming.com';
+const description = 'Comprehensive guides on Social Security claiming strategies, spousal benefits, survivor benefits, taxes, COLA adjustments, and maximizing your lifetime benefits.';
+
+const guides = [
+  {
+    title: 'When to Claim Social Security',
+    description: 'Understand how claiming age affects your monthly benefit and learn strategies for choosing the optimal age between 62 and 70.',
+    href: '/guides/when-to-claim-social-security/',
+    icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Social Security Spousal Benefits',
+    description: 'Learn how spousal benefits work, eligibility requirements, and coordination strategies for married couples.',
+    href: '/guides/social-security-spousal-benefits/',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+  },
+  {
+    title: 'Social Security Survivor Benefits',
+    description: 'Understand how survivor benefits protect your family and how the higher earner\'s claiming decision impacts the surviving spouse.',
+    href: '/guides/social-security-survivor-benefits/',
+    icon: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+  },
+  {
+    title: 'How Social Security Is Taxed',
+    description: 'Find out when Social Security benefits become taxable, federal and state tax thresholds, and strategies to reduce your tax burden.',
+    href: '/guides/social-security-taxes/',
+    icon: 'M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z',
+  },
+  {
+    title: 'Working While Collecting Social Security',
+    description: 'Learn how the earnings test works, what happens to withheld benefits, and how working affects your benefit amount.',
+    href: '/guides/social-security-and-working/',
+    icon: 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  },
+  {
+    title: 'Maximize Your Social Security Benefits',
+    description: 'Proven strategies to increase your lifetime Social Security income through earnings optimization, timing, and spousal coordination.',
+    href: '/guides/maximize-social-security/',
+    icon: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6',
+  },
+  {
+    title: 'Social Security COLA Adjustments',
+    description: 'How Cost-of-Living Adjustments work, historical COLA data, and how annual increases compound to protect your purchasing power.',
+    href: '/guides/social-security-cola/',
+    icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Social Security Break-Even Analysis',
+    description: 'Calculate the break-even age between early and delayed claiming, and understand when delaying benefits pays off financially.',
+    href: '/guides/social-security-break-even/',
+    icon: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <div class="space-y-8">
+    <nav class="text-sm text-gray-500">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-900">Guides</span>
+    </nav>
+
+    <div class="text-center space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Social Security <span class="text-primary">Guides</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        In-depth guides to help you understand Social Security benefits, plan your claiming strategy, and maximize your lifetime income.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      {guides.map((guide) => (
+        <a href={guide.href} class="group bg-white rounded-xl border border-border p-6 hover:border-primary hover:shadow-lg transition-all duration-200">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d={guide.icon} />
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h2 class="text-lg font-semibold text-gray-900 group-hover:text-primary transition-colors">{guide.title}</h2>
+              <p class="text-sm text-gray-600 leading-relaxed">{guide.description}</p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 text-sm text-blue-800 mt-8">
+      <p>
+        These guides are for educational purposes only and do not constitute financial advice. For personalized guidance, consult a qualified financial advisor or visit
+        <a href="https://www.ssa.gov" target="_blank" rel="noopener noreferrer" class="underline font-medium">SSA.gov</a>.
+      </p>
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialsecuritytiming.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://socialsecuritytiming.com/guides/" }
+    ]
+  })} />
+</Layout>

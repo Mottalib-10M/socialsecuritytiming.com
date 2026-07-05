@@ -20,6 +20,7 @@ const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
     <link rel="canonical" href={pageUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="Mottalib Radif" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -36,12 +37,43 @@ const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
       "description": description,
     })} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Social Security Timing",
+      "url": "https://socialsecuritytiming.com",
+      "logo": "https://socialsecuritytiming.com/favicon.svg",
+      "founder": {
+        "@type": "Person",
+        "name": "Mottalib Radif"
+      }
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mottalib Radif",
+      "jobTitle": "Financial Technology Expert",
+      "url": "https://socialsecuritytiming.com"
+    })} />
+
     <script defer data-domain="socialsecuritytiming.com" src="https://plausible.io/js/script.js"></script>
+
+    <!-- TODO: Replace G-XXXXXXXXXX with your real GA4 Measurement ID from https://analytics.google.com -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <style>
       @import '../styles/global.css';
     </style>
   </head>
   <body class="min-h-screen bg-surface text-gray-900 font-sans">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-blue-700 focus:rounded-lg focus:shadow-lg focus:ring-2 focus:ring-blue-500">Skip to content</a>
     <header class="bg-white border-b border-border">
       <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" class="flex items-center gap-2 text-primary font-bold text-xl hover:text-primary-dark transition-colors">
@@ -52,11 +84,35 @@ const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
         </a>
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="/" class="text-gray-600 hover:text-primary transition-colors">Calculator</a>
+          <a href="/guides/" class="text-gray-600 hover:text-primary transition-colors">Guides</a>
           <a href="/faq/" class="text-gray-600 hover:text-primary transition-colors">FAQ</a>
         </nav>
+        <!-- Mobile hamburger button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-gray-600 hover:text-primary hover:bg-gray-100 transition-colors"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
+      <!-- Mobile menu -->
+      <nav id="mobile-menu" class="hidden md:hidden border-t border-border bg-white">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col gap-4 text-sm">
+          <a href="/" class="text-gray-600 hover:text-primary transition-colors py-2">Calculator</a>
+          <a href="/guides/" class="text-gray-600 hover:text-primary transition-colors py-2">Guides</a>
+          <a href="/faq/" class="text-gray-600 hover:text-primary transition-colors py-2">FAQ</a>
+        </div>
+      </nav>
     </header>
-    <main class="max-w-5xl mx-auto px-4 py-8">
+    <main id="main-content" class="max-w-5xl mx-auto px-4 py-8">
       <slot />
     </main>
     <footer class="bg-white border-t border-border mt-12">
@@ -66,6 +122,7 @@ const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
             <h3 class="font-semibold text-gray-900 mb-3">Tools</h3>
             <ul class="space-y-2">
               <li><a href="/" class="hover:text-primary">Claiming Age Calculator</a></li>
+              <li><a href="/guides/" class="hover:text-primary">Guides</a></li>
               <li><a href="/faq/" class="hover:text-primary">FAQ</a></li>
             </ul>
           </div>
@@ -90,5 +147,17 @@ const pageUrl = canonical ?? `${siteUrl}${Astro.url.pathname}`;
         </div>
       </div>
     </footer>
+    <script is:inline>
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        const hamburger = document.getElementById('hamburger-icon');
+        const close = document.getElementById('close-icon');
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        hamburger.classList.toggle('hidden');
+        close.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+    </script>
   </body>
 </html>

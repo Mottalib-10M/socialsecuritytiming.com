@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="About - SocialSecurityTiming.com" description="Learn about SocialSecurityTiming.com, the free Social Security benefits timing optimizer built by Mottalib Radif.">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://socialsecuritytiming.com/" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://socialsecuritytiming.com/about/" }
+    ]
+  })} />
+
+  <div class="max-w-3xl mx-auto">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="/" class="hover:text-primary">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-gray-800">About</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">About SocialSecurityTiming.com</h1>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Who Built This Calculator</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        SocialSecurityTiming.com was created by <strong>Mottalib Radif</strong>, a software engineer specializing in financial technology and interactive calculator tools. Mottalib has extensive experience building web applications that simplify complex financial decisions for everyday users. His expertise spans full-stack development, data modeling, and user experience design, all of which contribute to making retirement planning tools that are both accurate and intuitive. He is committed to helping Americans make better-informed decisions about their Social Security benefits.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Our Mission</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The mission of SocialSecurityTiming.com is to help Americans optimize their Social Security claiming strategy by providing a free, transparent, and easy-to-use calculator. Deciding when to claim Social Security benefits is one of the most consequential financial decisions a person can make, and it should not require expensive financial advisors to understand your options. We aim to present clear projections so that individuals and couples can compare the long-term impact of claiming at different ages.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">How the Calculator Works</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        Our optimizer uses the official Social Security Administration formulas to project your monthly and lifetime benefits based on your chosen claiming age. You enter your estimated Primary Insurance Amount (PIA) or your earnings history, and the tool calculates how early filing reductions or delayed retirement credits affect your monthly benefit. It then projects cumulative lifetime benefits across different claiming ages so you can identify your break-even point.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        The calculator incorporates key variables such as cost-of-living adjustments (COLA), spousal benefits, survivor benefits, and the earnings test for those who continue working while receiving benefits. All computations run locally in your browser, so your personal financial information is never transmitted to our servers or stored anywhere.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Data Sources</h2>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        All benefit formulas, bend points, COLA rates, and reduction/credit factors are sourced directly from the Social Security Administration (ssa.gov). We reference the SSA's official retirement planner, actuarial tables, and annual fact sheets to keep our calculations current. We update the calculator each year when the SSA publishes new bend points and COLA adjustments.
+      </p>
+      <p class="text-gray-700 leading-relaxed mb-4">
+        This calculator is designed for educational and planning purposes only. It is not affiliated with the Social Security Administration or any government agency. Your actual benefits may differ based on your complete earnings record and individual circumstances. We recommend creating a my Social Security account at ssa.gov for your official benefit estimate and consulting a financial advisor for personalized retirement planning.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3">Contact</h2>
+      <p class="text-gray-700 leading-relaxed">
+        We welcome your feedback, questions, and suggestions. If you notice any discrepancies or have ideas for new features, please reach out through our website. Your input helps us continuously improve the accuracy and usefulness of this tool.
+      </p>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,316 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SSCalculator from '../components/SSCalculator';
+import { claimingAgesData, type ClaimingAgeEntry } from '../lib/claiming-ages-data';
+import { calculateBenefitAtAge, calculateBreakeven, calculateLifetimeTotal, compareClaimingAges } from '../lib/engine';
+
+export function getStaticPaths() {
+  return claimingAgesData.map((entry) => ({
+    params: { age: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: ClaimingAgeEntry;
+}
+
+const { entry } = Astro.props;
+
+const title = `Claiming Social Security at ${entry.age} - Benefits, Reduction & Strategy`;
+const description = `Claiming Social Security at age ${entry.age} means receiving ${entry.percentOfPIA}% of your PIA. Learn about the ${entry.reductionOrCredit > 0 ? entry.reductionOrCredit + '% delayed credit' : Math.abs(entry.reductionOrCredit) + '% reduction'}, break-even analysis, and optimal strategy.`;
+const siteUrl = 'https://socialsecuritytiming.com';
+
+// Example PIA levels for benefit table
+const examplePIAs = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4873];
+const birthYear = 1960;
+const lifeExpectancy = 85;
+
+// Build benefit table for this claiming age across different PIA levels
+const benefitRows = examplePIAs.map((pia) => {
+  const monthly = calculateBenefitAtAge(pia, birthYear, entry.age);
+  const annual = monthly * 12;
+  const lifetime = calculateLifetimeTotal(pia, birthYear, entry.age, lifeExpectancy, 0);
+  const breakEvenVs67 = entry.age < 67
+    ? calculateBreakeven(pia, birthYear, entry.age, 67)
+    : entry.age > 67
+      ? calculateBreakeven(pia, birthYear, 67, entry.age)
+      : null;
+  return { pia, monthly, annual, lifetime, breakEvenVs67 };
+});
+
+// Build comparison across all claiming ages for a $2,000 PIA
+const comparisonResults = compareClaimingAges(2000, birthYear, lifeExpectancy, 0);
+
+// Other ages for cross-linking
+const otherAges = claimingAgesData.filter((a) => a.age !== entry.age);
+
+function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+// Schema.org data
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": `Claim at ${entry.age}`,
+      "item": `${siteUrl}/claim-at-${entry.slug}/`,
+    },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": entry.faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer,
+    },
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="space-y-12">
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+        <li class="before:content-['/'] before:mx-2">Claim at {entry.age}</li>
+      </ol>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900">
+        Claiming Social Security at <span class="text-primary">Age {entry.age}</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        {entry.reductionOrCredit === 0 ? (
+          `At your Full Retirement Age, you receive 100% of your PIA - no reduction, no bonus.`
+        ) : entry.reductionOrCredit < 0 ? (
+          `Claiming at ${entry.age} permanently reduces your benefit by ${Math.abs(entry.reductionOrCredit)}%. You receive ${entry.percentOfPIA}% of your PIA.`
+        ) : (
+          `Delaying to ${entry.age} earns you ${entry.reductionOrCredit}% in Delayed Retirement Credits. You receive ${entry.percentOfPIA}% of your PIA.`
+        )}
+      </p>
+    </section>
+
+    <!-- Key Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">Benefit Percentage</p>
+        <p class="text-4xl font-bold text-primary">{entry.percentOfPIA}%</p>
+        <p class="text-sm text-gray-500 mt-1">of your PIA</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">
+          {entry.reductionOrCredit === 0 ? 'Adjustment' : entry.reductionOrCredit < 0 ? 'Permanent Reduction' : 'Delayed Credit'}
+        </p>
+        <p class={`text-4xl font-bold ${entry.reductionOrCredit < 0 ? 'text-red-600' : entry.reductionOrCredit > 0 ? 'text-green-600' : 'text-gray-700'}`}>
+          {entry.reductionOrCredit === 0 ? 'None' : `${entry.reductionOrCredit > 0 ? '+' : ''}${entry.reductionOrCredit}%`}
+        </p>
+        <p class="text-sm text-gray-500 mt-1">vs Full Retirement Age</p>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm border border-border p-6 text-center">
+        <p class="text-sm text-gray-500 mb-1">Monthly at $2,000 PIA</p>
+        <p class="text-4xl font-bold text-gray-900">{formatCurrency(calculateBenefitAtAge(2000, birthYear, entry.age))}</p>
+        <p class="text-sm text-gray-500 mt-1">per month</p>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <article class="prose prose-lg max-w-none">
+      <section>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Understanding Benefits at Age {entry.age}</h2>
+        <p class="text-gray-700 leading-relaxed">{entry.description}</p>
+      </section>
+
+      <!-- Benefit Table by PIA Level -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Monthly Benefit at Age {entry.age} by PIA Level</h2>
+        <p class="text-gray-700 mb-4">
+          The table below shows your estimated monthly and annual benefit if you claim at age {entry.age},
+          for various PIA levels. All figures assume a birth year of 1960 or later (FRA = 67).
+        </p>
+        <div class="overflow-x-auto not-prose">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50 border-b border-border">
+                <th class="px-4 py-3 text-left font-semibold text-gray-600">PIA</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Monthly at {entry.age}</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Annual</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Lifetime to 85</th>
+                {entry.age !== 67 && (
+                  <th class="px-4 py-3 text-right font-semibold text-gray-600">Break-Even vs 67</th>
+                )}
+              </tr>
+            </thead>
+            <tbody>
+              {benefitRows.map((row) => (
+                <tr class="border-b border-gray-100 hover:bg-gray-50">
+                  <td class="px-4 py-3 font-medium">{formatCurrency(row.pia)}</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(row.monthly)}</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(row.annual)}</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(row.lifetime)}</td>
+                  {entry.age !== 67 && (
+                    <td class="px-4 py-3 text-right">
+                      {row.breakEvenVs67 !== null && row.breakEvenVs67 !== Infinity
+                        ? `Age ${(Math.round(row.breakEvenVs67 * 10) / 10).toFixed(1)}`
+                        : '-'}
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Strategy Section -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Strategy: When Claiming at {entry.age} Makes Sense</h2>
+        <p class="text-gray-700 leading-relaxed">{entry.strategy}</p>
+      </section>
+
+      <!-- Break-Even Analysis -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Break-Even Analysis</h2>
+        <p class="text-gray-700 leading-relaxed">{entry.breakEvenVsFRA}</p>
+      </section>
+
+      <!-- Comparison Table (all ages for $2,000 PIA) -->
+      <section class="mt-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">All Claiming Ages Compared ($2,000 PIA)</h2>
+        <p class="text-gray-700 mb-4">
+          See how age {entry.age} compares to every other claiming age, using a $2,000 PIA example with no COLA and life expectancy of 85.
+        </p>
+        <div class="overflow-x-auto not-prose">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-gray-50 border-b border-border">
+                <th class="px-4 py-3 text-left font-semibold text-gray-600">Age</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">% of PIA</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Monthly</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Annual</th>
+                <th class="px-4 py-3 text-right font-semibold text-gray-600">Lifetime to 85</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonResults.map((r) => (
+                <tr class={`border-b border-gray-100 ${r.claimAge === entry.age ? 'bg-blue-50 font-semibold' : 'hover:bg-gray-50'}`}>
+                  <td class="px-4 py-3">
+                    {r.claimAge}
+                    {r.claimAge === entry.age && (
+                      <span class="ml-2 text-xs bg-primary text-white px-2 py-0.5 rounded-full">This page</span>
+                    )}
+                    {r.claimAge === 67 && r.claimAge !== entry.age && (
+                      <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">FRA</span>
+                    )}
+                  </td>
+                  <td class="px-4 py-3 text-right">{r.percentOfPIA}%</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(r.monthlyBenefit)}</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(r.annualBenefit)}</td>
+                  <td class="px-4 py-3 text-right">{formatCurrency(r.lifetimeTotal)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </article>
+
+    <!-- Calculator -->
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Calculate Your Benefit at Age {entry.age}</h2>
+      <p class="text-gray-600 mb-6">
+        Enter your own PIA to see exactly what your monthly benefit would be at age {entry.age}, and compare it to all other claiming ages.
+      </p>
+      <SSCalculator client:idle />
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="space-y-6 mt-8">
+      <h2 class="text-3xl font-bold text-gray-900">Frequently Asked Questions About Claiming at {entry.age}</h2>
+      <div class="space-y-4">
+        {entry.faqs.map((faq) => (
+          <details class="bg-white rounded-lg border border-border p-4 group">
+            <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between">
+              {faq.question}
+              <svg class="h-5 w-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 text-gray-600 leading-relaxed">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cross-Links to Other Ages -->
+    <section class="mt-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Explore Other Claiming Ages</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {otherAges.map((other) => (
+          <a
+            href={`/claim-at-${other.slug}/`}
+            class="bg-white rounded-lg border border-border p-4 hover:border-primary hover:shadow-sm transition-all text-center group"
+          >
+            <p class="text-2xl font-bold text-primary group-hover:text-primary-dark">{other.age}</p>
+            <p class="text-sm text-gray-500">{other.percentOfPIA}% of PIA</p>
+            <p class={`text-xs mt-1 ${other.reductionOrCredit < 0 ? 'text-red-500' : other.reductionOrCredit > 0 ? 'text-green-600' : 'text-gray-400'}`}>
+              {other.reductionOrCredit === 0 ? 'FRA - no change' : `${other.reductionOrCredit > 0 ? '+' : ''}${other.reductionOrCredit}%`}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Cross-Links to Benefit Amount Pages -->
+    <section class="mt-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Benefit Amount Guides</h2>
+      <p class="text-gray-600 mb-4">See detailed benefit tables for specific PIA levels:</p>
+      <div class="flex flex-wrap gap-3">
+        {examplePIAs.map((pia) => (
+          <a
+            href={`/benefit-${pia === 4873 ? '4873' : pia}/`}
+            class="bg-white rounded-lg border border-border px-4 py-2 hover:border-primary hover:shadow-sm transition-all text-sm font-medium text-gray-700 hover:text-primary"
+          >
+            {formatCurrency(pia)} PIA
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800 mt-8">
+      <strong>Important:</strong> These estimates are for educational purposes only and should not be considered
+      financial advice. Actual benefits depend on your complete earnings record, future COLAs, and other factors.
+      Consult your Social Security statement at{' '}
+      <a href="https://www.ssa.gov/myaccount/" target="_blank" rel="noopener noreferrer" class="underline">
+        ssa.gov/myaccount
+      </a>{' '}
+      and consider speaking with a financial advisor.
+    </div>
+  </div>
+</Layout>
